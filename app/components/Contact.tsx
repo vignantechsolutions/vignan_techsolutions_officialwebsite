@@ -9,7 +9,8 @@ import {
   PaperAirplaneIcon,
   ClockIcon,
   SparklesIcon,
-  RocketLaunchIcon
+  RocketLaunchIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline'
 
 export default function Contact() {
@@ -20,15 +21,38 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    service: '',
-    message: ''
+    phone: '',
+    projectType: '',
+    description: '',
+    budget: '',
+    timeline: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\nMessage: ${formData.message}`
-    const smsUrl = `sms:+919110478047?body=${encodeURIComponent(message)}`
-    window.location.href = smsUrl
+    setIsSubmitting(true)
+    
+    try {
+      const response = await fetch('/api/project-inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      
+      if (response.ok) {
+        setShowSuccess(true)
+        setFormData({ name: '', email: '', phone: '', projectType: '', description: '', budget: '', timeline: '' })
+        setTimeout(() => setShowSuccess(false), 8000)
+      } else {
+        alert('Failed to submit project inquiry. Please try again.')
+      }
+    } catch (error) {
+      alert('Network error. Please try again.')
+    }
+    
+    setIsSubmitting(false)
   }
 
   return (
@@ -69,7 +93,7 @@ export default function Contact() {
               animate={{ textShadow: ['0 0 20px rgba(0,255,255,0.5)', '0 0 40px rgba(168,85,247,0.5)', '0 0 20px rgba(0,255,255,0.5)'] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Contact Us
+              Ready to Start Your Project?
             </motion.h2>
             <motion.div 
               className="w-24 h-1 bg-gradient-to-r from-electric-cyan to-purple-500 mx-auto mb-8"
@@ -84,7 +108,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-tech-gray font-tech max-w-4xl mx-auto leading-relaxed"
           >
-            Ready to transform your ideas into reality? Let's discuss your project and bring your vision to life!
+            Launch Your Project with us! Fill out the form below and let's transform your ideas into reality.
           </motion.p>
         </motion.div>
 
@@ -118,80 +142,130 @@ export default function Contact() {
                   animate={{ textShadow: ['0 0 10px rgba(0,255,255,0.5)', '0 0 20px rgba(0,255,255,0.8)', '0 0 10px rgba(0,255,255,0.5)'] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  Send us a message
+                  Launch Your Project
                 </motion.h3>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
-                    required
-                  />
-                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                      required
+                    />
+                  </motion.div>
+                  
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <input
+                      type="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                      required
+                    />
+                  </motion.div>
+                </div>
                 
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
-                    required
-                  />
-                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                    />
+                  </motion.div>
+                  
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <select
+                      value={formData.projectType}
+                      onChange={(e) => setFormData({...formData, projectType: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                      required
+                    >
+                      <option value="" className="bg-dark-gray">Select Project Type</option>
+                      <option value="Final Year Project" className="bg-dark-gray">Final Year Project</option>
+                      <option value="Web Development" className="bg-dark-gray">Web Development</option>
+                      <option value="Mobile App Development" className="bg-dark-gray">Mobile App Development</option>
+                      <option value="AI/ML Solutions" className="bg-dark-gray">AI/ML Solutions</option>
+                      <option value="E-commerce Platform" className="bg-dark-gray">E-commerce Platform</option>
+                      <option value="Custom Software" className="bg-dark-gray">Custom Software</option>
+                      <option value="Other" className="bg-dark-gray">Other</option>
+                    </select>
+                  </motion.div>
+                </div>
                 
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({...formData, service: e.target.value})}
-                    className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
-                    required
-                  >
-                    <option value="" className="bg-dark-gray">Select Service</option>
-                    <option value="final-year-project" className="bg-dark-gray">Final Year Project</option>
-                    <option value="web-development" className="bg-dark-gray">Web Development</option>
-                    <option value="tech-solutions" className="bg-dark-gray">Tech Solutions</option>
-                    <option value="online-classes" className="bg-dark-gray">Online Classes</option>
-                  </select>
-                </motion.div>
-                
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <textarea
-                    placeholder="Tell us about your project..."
-                    rows={6}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    placeholder="Describe your project requirements in detail..."
+                    rows={5}
+                    value={formData.description}
+                    onChange={(e) => setFormData({...formData, description: e.target.value})}
                     className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm resize-none"
                     required
                   ></textarea>
                 </motion.div>
                 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                    >
+                      <option value="" className="bg-dark-gray">Budget Range (Optional)</option>
+                      <option value="Under ₹10,000" className="bg-dark-gray">Under ₹10,000</option>
+                      <option value="₹10,000 - ₹25,000" className="bg-dark-gray">₹10,000 - ₹25,000</option>
+                      <option value="₹25,000 - ₹50,000" className="bg-dark-gray">₹25,000 - ₹50,000</option>
+                      <option value="₹50,000 - ₹1,00,000" className="bg-dark-gray">₹50,000 - ₹1,00,000</option>
+                      <option value="Above ₹1,00,000" className="bg-dark-gray">Above ₹1,00,000</option>
+                    </select>
+                  </motion.div>
+                  
+                  <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <select
+                      value={formData.timeline}
+                      onChange={(e) => setFormData({...formData, timeline: e.target.value})}
+                      className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-electric-cyan focus:bg-white/15 transition-all backdrop-blur-sm"
+                    >
+                      <option value="" className="bg-dark-gray">Timeline (Optional)</option>
+                      <option value="ASAP" className="bg-dark-gray">ASAP</option>
+                      <option value="1-2 weeks" className="bg-dark-gray">1-2 weeks</option>
+                      <option value="1 month" className="bg-dark-gray">1 month</option>
+                      <option value="2-3 months" className="bg-dark-gray">2-3 months</option>
+                      <option value="3+ months" className="bg-dark-gray">3+ months</option>
+                    </select>
+                  </motion.div>
+                </div>
+                
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(6, 182, 212, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full bg-gradient-to-r from-electric-cyan to-purple-500 text-white py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-electric-cyan to-purple-500 text-white py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg disabled:opacity-50"
                 >
                   <RocketLaunchIcon className="w-6 h-6" />
-                  Launch Your Project
+                  {isSubmitting ? 'Launching...' : 'Launch Your Project'}
                 </motion.button>
+                
+                {showSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-6 bg-green-400/10 border border-green-400/30 rounded-xl text-center"
+                  >
+                    <CheckCircleIcon className="w-8 h-8 text-green-400 mx-auto mb-3" />
+                    <p className="text-green-400 font-cyber text-lg mb-2">Project Inquiry Submitted Successfully!</p>
+                    <p className="text-tech-gray font-tech text-sm">Our team will review your requirements and get back to you within 24 hours with a detailed proposal.</p>
+                  </motion.div>
+                )}
               </form>
             </div>
           </motion.div>

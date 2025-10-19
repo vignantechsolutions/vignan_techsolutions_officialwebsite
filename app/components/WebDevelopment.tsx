@@ -354,38 +354,7 @@ export default function WebDevelopment() {
           </div>
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="glass-effect p-8 rounded-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold text-white mb-4">🎯 Ready to Build Your Digital Presence?</h2>
-          <p className="text-xl text-gray-300 mb-8">Let's design a website that defines your business and drives growth</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 25px #06B6D4" }}
-              onClick={() => {
-                const subject = "Web Development Quote Request"
-                const body = "I'm interested in web development services. Please provide a detailed quote."
-                window.location.href = `mailto:vignantechsolutions@gmail.com?subject=${subject}&body=${body}`
-              }}
-              className="bg-electric-cyan text-dark-gray px-8 py-4 rounded-full font-semibold text-lg neon-glow"
-            >
-              🚀 Get a Free Quote
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              onClick={() => {
-                const message = "Hi! I'm interested in web development services. Can we discuss my requirements?"
-                window.open(`https://wa.me/919110478047?text=${encodeURIComponent(message)}`, '_blank')
-              }}
-              className="glass-effect px-8 py-4 rounded-full font-semibold text-lg text-white border border-electric-cyan"
-            >
-              💬 Chat with Our Expert
-            </motion.button>
-          </div>
-        </motion.div>
+
       </div>
     </div>
   )

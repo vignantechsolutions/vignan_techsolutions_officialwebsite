@@ -16,7 +16,7 @@ export default function FuturisticHero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-deep-navy">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-14 sm:pt-16">
       {/* Floating Particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((particle) => (
@@ -48,126 +48,176 @@ export default function FuturisticHero() {
         <div className="digital-wave" style={{animationDelay: '1s'}}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-12"
+          transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
+          className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-cyber font-black mb-6 leading-tight">
-            <span className="cyber-text">VIGNAN</span>
-            <span className="text-tech-gray ml-2">
-              <span className="text-purple-400">T</span>ECH<span className="text-purple-400">S</span>OLUTIONS
-            </span>
-          </h1>
+          <div className="relative mb-8">
+            <motion.h1 
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-cyber font-black leading-tight relative z-10"
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.4)',
+                  '0 0 30px rgba(168,85,247,0.8), 0 0 60px rgba(168,85,247,0.4)',
+                  '0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.4)'
+                ],
+                scale: [1, 1.02, 1]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              <motion.span 
+                className="cyber-text inline-block"
+                animate={{
+                  rotateX: [0, 5, 0],
+                  rotateY: [0, -2, 0]
+                }}
+                transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+              >
+                VIGNAN
+              </motion.span>
+              <motion.span 
+                className="text-tech-gray ml-4 sm:ml-6 inline-block"
+                animate={{
+                  rotateX: [0, -5, 0],
+                  rotateY: [0, 2, 0]
+                }}
+                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+              >
+                <motion.span 
+                  className="text-purple-400"
+                  animate={{ color: ['#a855f7', '#06b6d4', '#a855f7'] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  T
+                </motion.span>
+                ECH
+                <motion.span 
+                  className="text-purple-400"
+                  animate={{ color: ['#a855f7', '#06b6d4', '#a855f7'] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                >
+                  S
+                </motion.span>
+                OLUTIONS
+              </motion.span>
+            </motion.h1>
+            
+            {/* Holographic backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-cyan-glow/20 via-purple-400/20 to-cyan-glow/20 blur-3xl -z-10"
+              animate={{
+                opacity: [0.3, 0.7, 0.3],
+                scale: [0.8, 1.2, 0.8]
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+            
+            {/* Matrix-style scanning lines */}
+            <motion.div
+              className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-glow to-transparent"
+              animate={{ x: ['-100%', '100%'] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent"
+              animate={{ x: ['100%', '-100%'] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 1.5 }}
+            />
+          </div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mb-12 max-w-4xl mx-auto"
           >
-            <div className="glass-effect p-8 rounded-3xl max-w-5xl mx-auto border border-cyan-glow/30 relative overflow-hidden">
-              {/* Neural Network Background */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="neural-network-bg"></div>
-              </div>
-              
-              <div className="relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="mb-6"
-                >
-                  <h2 className="text-2xl md:text-3xl font-cyber text-electric-cyan mb-4 text-center">
-                    <span className="glow-text">EMPOWERING</span> <span className="text-purple-400">DIGITAL</span> <span className="text-white">TRANSFORMATION</span>
-                  </h2>
-                </motion.div>
-
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-xl text-tech-gray font-tech leading-relaxed mb-6 text-center"
-                >
-                  At <span className="text-electric-cyan font-bold glow-text">Vignan TechSolutions</span>, we bridge the gap between 
-                  <span className="text-purple-400 font-semibold">academic excellence</span> and 
-                  <span className="text-cyan-glow font-semibold">industry innovation</span>. We're not just a tech company - 
-                  we're <span className="text-electric-blue font-semibold">your growth partners</span> in the digital age.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6"
-                >
-                  <div className="text-center p-4 rounded-xl bg-gradient-to-br from-electric-cyan/10 to-transparent border border-electric-cyan/20">
-                    <div className="text-2xl mb-2">🎓</div>
-                    <h3 className="text-electric-cyan font-semibold mb-1">Student Success</h3>
-                    <p className="text-sm text-tech-gray/80">Final Year Projects & Career Guidance</p>
-                  </div>
-                  <div className="text-center p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-400/20">
-                    <div className="text-2xl mb-2">🚀</div>
-                    <h3 className="text-purple-400 font-semibold mb-1">Business Growth</h3>
-                    <p className="text-sm text-tech-gray/80">Web Solutions & Digital Presence</p>
-                  </div>
-                  <div className="text-center p-4 rounded-xl bg-gradient-to-br from-cyan-glow/10 to-transparent border border-cyan-glow/20">
-                    <div className="text-2xl mb-2">🎆</div>
-                    <h3 className="text-cyan-glow font-semibold mb-1">Innovation Hub</h3>
-                    <p className="text-sm text-tech-gray/80">Cutting-edge Tech Solutions</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
-                  className="mt-6 p-4 rounded-xl bg-gradient-to-r from-electric-cyan/5 to-purple-500/5 border border-electric-cyan/20"
-                >
-                  <p className="text-lg text-center text-tech-gray/90 font-tech leading-relaxed">
-                    <span className="text-electric-cyan font-bold">Our Mission:</span> To empower students with 
-                    <span className="glow-text font-bold">industry-ready skills</span> and help businesses achieve 
-                    <span className="text-purple-400 font-bold">digital excellence</span> through 
-                    <span className="text-cyan-glow font-bold">innovative technology solutions</span> and 
-                    <span className="text-electric-blue font-bold">personalized mentorship</span>.
-                  </p>
-                </motion.div>
-              </div>
-            </div>
+            <p className="text-lg md:text-xl text-tech-gray font-tech leading-relaxed mb-6">
+              Welcome to <span className="text-electric-cyan font-bold">Vignan TechSolutions</span> — where student ideas evolve into smart innovations.
+            </p>
+            <p className="text-base md:text-lg text-tech-gray/90 font-tech leading-relaxed mb-6">
+              We help aspiring engineers design, develop, and deploy cutting-edge final year projects that fuse <span className="text-cyan-glow">AI</span>, <span className="text-purple-400">ML</span>, <span className="text-green-400">IoT</span>, and <span className="text-electric-blue">Web Development</span> into powerful real-world solutions.
+            </p>
+            <p className="text-base md:text-lg text-tech-gray/90 font-tech leading-relaxed mb-8">
+              With our hands-on guidance, smart tools, and technical mentorship, your project journey becomes more than an assignment — it becomes your launchpad into the tech world.
+            </p>
+            <motion.div
+              animate={{
+                textShadow: [
+                  '0 0 10px rgba(0,255,255,0.5)',
+                  '0 0 20px rgba(168,85,247,0.5)',
+                  '0 0 10px rgba(0,255,255,0.5)'
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-xl md:text-2xl font-cyber text-electric-cyan"
+            >
+              💡 Dream. Design. Develop. Deploy. — That's the Vignan Way.
+            </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Tech Stack Showcase */}
+        {/* Advanced Tech Stack Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="tech-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 max-w-6xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 100, damping: 20 }}
+          className="tech-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto"
         >
           {[
-            { name: 'AI/ML', icon: '🧠', color: 'cyan-glow' },
-            { name: 'Python Fullstack', icon: '🐍', color: 'electric-blue' },
-            { name: 'Java Fullstack', icon: '☕', color: 'cyan-glow' },
-            { name: 'Web Development', icon: '🌐', color: 'electric-blue' },
-            { name: 'MERN Stack', icon: '⚛️', color: 'cyan-glow' }
-          ].map((tech, index) => (
+            { name: 'Innovate', icon: '💡', color: 'from-cyan-glow to-electric-blue' },
+            { name: 'Create', icon: '🚀', color: 'from-electric-blue to-purple-400' },
+            { name: 'Transform', icon: '⚡', color: 'from-purple-400 to-green-400' },
+            { name: 'Succeed', icon: '🎯', color: 'from-green-400 to-cyan-glow' },
+            { name: 'Excel', icon: '🏆', color: 'from-cyan-glow to-electric-blue' }
+          ].map((aim, index) => (
             <motion.div
-              key={tech.name}
+              key={aim.name}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-              className="holo-card rounded-2xl p-8 text-center group cursor-pointer"
+              transition={{ duration: 0.4, delay: 0.8 + index * 0.1, type: "spring", stiffness: 150, damping: 25 }}
+              whileHover={{ 
+                scale: 1.1,
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
+              className="holo-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden"
             >
-              <div className="text-5xl mb-4 group-hover:animate-tech-glow transition-all">{tech.icon}</div>
-              <h3 className="font-cyber text-sm text-tech-gray group-hover:text-cyan-glow transition-colors">{tech.name}</h3>
+              <div className={`absolute inset-0 bg-gradient-to-br ${aim.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
               
-              {/* Cyber Scan Effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-cyan-glow animate-cyber-scan"></div>
-              </div>
+              <motion.div 
+                className="text-4xl mb-4 relative z-10"
+                animate={{
+                  rotateY: [0, 360],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: index * 0.5
+                }}
+              >
+                {aim.icon}
+              </motion.div>
+              
+              <h3 className="font-cyber text-lg text-cyan-glow group-hover:text-white transition-colors duration-300 relative z-10">
+                {aim.name}
+              </h3>
+              
+              {/* Holographic scan effect */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-glow to-transparent opacity-0 group-hover:opacity-100"
+                animate={{
+                  y: [0, 100, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
             </motion.div>
           ))}
         </motion.div>

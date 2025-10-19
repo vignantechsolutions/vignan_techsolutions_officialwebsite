@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { RocketLaunchIcon, BellIcon, AcademicCapIcon } from '@heroicons/react/24/outline'
+import { RocketLaunchIcon, BellIcon, AcademicCapIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 export default function Classes() {
   return (
@@ -135,6 +135,22 @@ export default function Classes() {
               <AcademicCapIcon className="w-6 h-6 mr-2" />
               Stay Updated
             </motion.button>
+
+            {/* Acknowledgment Message Box */}
+            <motion.div
+              initial={{ opacity: 0, x: -200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="mt-8 glass-effect p-6 rounded-2xl border border-green-400/30 bg-green-400/10 max-w-2xl mx-auto"
+            >
+              <div className="flex items-center justify-center mb-4">
+                <CheckCircleIcon className="w-8 h-8 text-green-400 mr-3" />
+                <h4 className="text-xl font-cyber text-green-400">Thank You for Your Interest!</h4>
+              </div>
+              <p className="text-tech-gray font-tech text-center">
+                We appreciate your enthusiasm for learning with Vignan TechSolutions. Our team is working diligently to launch comprehensive online classes that will transform your career in technology. Stay tuned for updates!
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

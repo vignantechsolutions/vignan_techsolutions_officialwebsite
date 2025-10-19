@@ -58,7 +58,7 @@ export default function SmartTestimonials() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-20">
+    <div className="max-w-6xl mx-auto pt-8 pb-20">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

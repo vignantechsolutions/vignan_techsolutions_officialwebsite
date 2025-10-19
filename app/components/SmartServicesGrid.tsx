@@ -65,22 +65,10 @@ export default function SmartServicesGrid() {
 
   return (
     <div className="max-w-7xl mx-auto py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-5xl font-cyber text-cyan-glow mb-6">
-          Our Services
-        </h2>
-        <p className="text-xl text-tech-gray/70 font-tech max-w-3xl mx-auto">
-          Comprehensive tech solutions designed for students and professionals
-        </p>
-      </motion.div>
+
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {services.map((service, index) => (
           <motion.div
             key={service.id}
@@ -92,21 +80,11 @@ export default function SmartServicesGrid() {
             onHoverEnd={() => setHoveredService(null)}
             className="group cursor-pointer"
           >
-            <div className={`relative holo-card rounded-3xl p-8 h-full overflow-hidden transition-all duration-500 ${
-              hoveredService === service.id ? 'shadow-holo scale-105' : ''
+            <div className={`relative holo-card rounded-2xl p-6 h-full overflow-hidden ${
+              hoveredService === service.id ? 'shadow-holo' : ''
             }`}>
               {/* Animated Background */}
-              <motion.div
-                className={`absolute inset-0 ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                animate={hoveredService === service.id ? {
-                  background: [
-                    service.gradient,
-                    service.gradient.replace('/20', '/30'),
-                    service.gradient
-                  ]
-                } : {}}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <div className={`absolute inset-0 ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
               {/* Content */}
               <div className="relative z-10">
@@ -115,99 +93,58 @@ export default function SmartServicesGrid() {
                   <div className={`p-4 rounded-2xl bg-gradient-to-r ${service.color} text-deep-navy`}>
                     {service.icon}
                   </div>
-                  <motion.div
-                    animate={hoveredService === service.id ? { rotate: 360 } : { rotate: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <div className={`transition-transform duration-300 ${
+                    hoveredService === service.id ? 'rotate-90' : ''
+                  }`}>
                     <ChevronRightIcon className="w-6 h-6 text-cyan-glow" />
-                  </motion.div>
-                </div>
-
-                <h3 className="text-2xl font-cyber text-cyan-glow mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-tech-gray/70 font-tech mb-6 leading-relaxed">
-                  {service.subtitle}
-                </p>
-
-                {/* Features */}
-                <div className="mb-6">
-                  <h4 className="text-lg font-cyber text-electric-blue mb-3">Key Features</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.features.map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={hoveredService === service.id ? { opacity: 1, x: 0 } : { opacity: 0.7, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="flex items-center space-x-2"
-                      >
-                        <div className="w-2 h-2 bg-cyan-glow rounded-full"></div>
-                        <span className="text-tech-gray font-tech text-sm">{feature}</span>
-                      </motion.div>
-                    ))}
                   </div>
                 </div>
 
+                <h3 className="text-xl font-cyber text-cyan-glow mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-tech-gray/70 font-tech mb-4 text-sm leading-relaxed">
+                  {service.subtitle}
+                </p>
+
                 {/* Technologies */}
-                <div>
-                  <h4 className="text-lg font-cyber text-electric-blue mb-3">Technologies/Domains</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech, idx) => (
-                      <motion.span
+                <div className="mb-4">
+                  <div className="flex flex-wrap gap-1">
+                    {service.technologies.slice(0, 3).map((tech, idx) => (
+                      <span
                         key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={hoveredService === service.id ? { opacity: 1, scale: 1 } : { opacity: 0.8, scale: 0.9 }}
-                        transition={{ delay: idx * 0.05 }}
-                        className="px-3 py-1 bg-deep-navy/30 rounded-full text-xs font-code text-tech-gray border border-cyan-glow/20"
+                        className="px-2 py-1 bg-deep-navy/30 rounded-full text-xs font-code text-tech-gray border border-cyan-glow/20"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>
 
                 {/* Learn More Button */}
                 {service.id === 1 ? (
-                  <Link href="/projects">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold transition-all"
-                    >
+                  <Link href="/final-year-projects">
+                    <button className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold">
                       Learn More
-                    </motion.button>
+                    </button>
                   </Link>
                 ) : service.id === 2 ? (
                   <Link href="/web-development">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold transition-all"
-                    >
+                    <button className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold">
                       Learn More
-                    </motion.button>
+                    </button>
                   </Link>
                 ) : (
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     onClick={() => handleComingSoon(service.title)}
-                    className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold transition-all"
+                    className="mt-6 w-full neon-btn py-3 rounded-xl font-semibold"
                   >
                     Learn More
-                  </motion.button>
+                  </button>
                 )}
               </div>
 
-              {/* Holographic Scan Effect */}
-              {hoveredService === service.id && (
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-glow to-transparent"
-                  animate={{ y: [0, 400, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                />
-              )}
+
             </div>
           </motion.div>
         ))}

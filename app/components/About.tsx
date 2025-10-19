@@ -21,34 +21,46 @@ const team = [
 
 const values = [
   { 
+    icon: RocketLaunchIcon, 
+    title: "Vision", 
+    desc: "We see beyond the present, envisioning innovative solutions that shape tomorrow's technology landscape",
+    color: "from-cyan-400 to-blue-500",
+    letter: "V"
+  },
+  { 
     icon: LightBulbIcon, 
     title: "Innovation", 
-    desc: "We encourage creativity and out-of-the-box thinking in every project",
-    color: "from-yellow-400 to-orange-500"
+    desc: "We encourage creativity and out-of-the-box thinking in every project we undertake",
+    color: "from-yellow-400 to-orange-500",
+    letter: "I"
   },
   { 
-    icon: SparklesIcon, 
-    title: "Excellence", 
-    desc: "Quality isn't an option — it's our foundation in everything we deliver",
-    color: "from-blue-400 to-purple-500"
+    icon: CpuChipIcon, 
+    title: "Growth", 
+    desc: "We foster continuous learning and development for our team and students alike",
+    color: "from-green-400 to-teal-500",
+    letter: "G"
   },
   { 
-    icon: HeartIcon, 
-    title: "Integrity", 
-    desc: "We value trust, transparency, and teamwork in all our interactions",
-    color: "from-red-400 to-pink-500"
+    icon: UsersIcon, 
+    title: "Nurturing", 
+    desc: "We cultivate talent and guide students to become confident, skilled professionals",
+    color: "from-purple-400 to-pink-500",
+    letter: "N"
   },
   { 
     icon: AcademicCapIcon, 
-    title: "Learning", 
-    desc: "Technology never stops evolving, and neither do we or our students",
-    color: "from-green-400 to-teal-500"
+    title: "Advancement", 
+    desc: "We push boundaries in technology education and practical skill development",
+    color: "from-indigo-400 to-purple-500",
+    letter: "A"
   },
   { 
-    icon: GlobeAltIcon, 
-    title: "Impact", 
-    desc: "Every line of code we write aims to make a meaningful difference",
-    color: "from-purple-400 to-indigo-500"
+    icon: SparklesIcon, 
+    title: "Novelty", 
+    desc: "We bring fresh perspectives and cutting-edge approaches to every challenge",
+    color: "from-pink-400 to-red-500",
+    letter: "N"
   }
 ]
 
@@ -111,9 +123,10 @@ export default function About() {
       <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto relative z-10">
         {/* Advanced Hero Section */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-20 relative"
         >
           {/* Holographic Title Effect */}
@@ -177,9 +190,10 @@ export default function About() {
 
         {/* Our Journey */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-24"
         >
           <div className="text-center mb-16">
@@ -299,14 +313,19 @@ export default function About() {
 
         {/* Core Values */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-24"
         >
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">⚙️ What We Stand For</h3>
-            <p className="text-gray-400 text-lg">The principles that guide everything we do</p>
+            <p className="text-gray-400 text-lg mb-6">The principles that guide everything we do</p>
+            <div className="flex justify-center items-center space-x-2 mb-8">
+              <span className="text-3xl font-cyber text-cyan-glow">V-I-G-N-A-N</span>
+              <span className="text-xl text-gray-400">represents our core values</span>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -325,13 +344,18 @@ export default function About() {
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-6`}
-                  >
-                    <value.icon className="w-8 h-8 text-white" />
-                  </motion.div>
+                  <div className="flex items-center justify-center mb-6">
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                      className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mr-4`}
+                    >
+                      <value.icon className="w-8 h-8 text-white" />
+                    </motion.div>
+                    <div className={`w-12 h-12 bg-gradient-to-br ${value.color} rounded-xl flex items-center justify-center`}>
+                      <span className="text-white font-cyber font-bold text-xl">{value.letter}</span>
+                    </div>
+                  </div>
                   <h4 className="text-xl font-bold text-white mb-4">{value.title}</h4>
                   <p className="text-gray-300 leading-relaxed">{value.desc}</p>
                 </div>
@@ -342,9 +366,10 @@ export default function About() {
 
         {/* Founder's Message */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-24"
         >
           <div className="glass-effect p-12 rounded-3xl relative overflow-hidden border border-cyan-glow/30">
@@ -392,9 +417,10 @@ export default function About() {
 
         {/* Team */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-24"
         >
           <div className="text-center mb-16">
@@ -425,9 +451,10 @@ export default function About() {
 
         {/* Impact Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-24"
         >
           <div className="glass-effect p-12 rounded-3xl relative overflow-hidden">
@@ -488,9 +515,10 @@ export default function About() {
 
         {/* Looking Ahead */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center"
         >
           <div className="glass-effect p-12 rounded-3xl relative overflow-hidden">

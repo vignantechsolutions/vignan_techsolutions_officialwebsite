@@ -11,81 +11,99 @@ import {
 
 const portfolioSections = [
   {
+    id: 'projects',
+    icon: CpuChipIcon,
+    title: 'Final Year Projects',
+    emoji: '🎓',
+    description: 'Complete project packages for engineering, BCA, and MCA students. AI, ML, Web, and Mobile projects with full documentation and support.',
+    focuses: [
+      'AI & Machine Learning Projects',
+      'Python Full Stack Applications',
+      'Java Enterprise Solutions',
+      'Web Development Projects',
+      'MERN Stack Applications'
+    ],
+    tagline: 'Empowering students with industry-ready projects and comprehensive support.',
+    available: true
+  },
+  {
     id: 'web',
     icon: GlobeAltIcon,
     title: 'Web Development',
     emoji: '🌐',
-    description: 'We create modern, responsive, and high-performing websites that help brands make a strong digital impression. Our web projects combine aesthetic design, user-friendly interfaces, and strong backend logic to ensure seamless functionality across all devices.',
+    description: 'Modern, responsive websites that make brands shine. Beautiful design meets powerful functionality for businesses and startups.',
     focuses: [
-      'Corporate & Portfolio Websites',
-      'Educational Portals & LMS Platforms', 
-      'E-commerce Websites',
-      'CMS Solutions (WordPress, Strapi, Django)',
-      'SEO & Performance Optimization'
+      'Corporate Websites',
+      'E-commerce Stores',
+      'Educational Portals',
+      'CMS Solutions',
+      'SEO Optimization'
     ],
-    tagline: 'Each project is built to scale — blending creativity and code for measurable results.',
+    tagline: 'Creativity + Code = Digital Excellence',
     available: true
   },
   {
     id: 'fullstack',
     icon: CogIcon,
-    title: 'Full Stack Solutions',
+    title: 'Full Stack Development',
     emoji: '⚙️',
-    description: 'Our Full Stack projects integrate powerful backends with sleek, dynamic frontends — delivering complete, production-ready applications. We leverage technologies like React, Next.js, Node.js, and Django to build robust systems with intuitive user experiences.',
+    description: 'Complete web applications using modern frameworks. Python Django, Java Spring Boot, and MERN stack solutions for scalable business needs.',
     focuses: [
-      'Business Dashboards & Admin Panels',
-      'SaaS Platforms',
-      'Real-time Data Applications', 
-      'Cloud-integrated Systems'
+      'Django Applications',
+      'Spring Boot Systems',
+      'React.js Frontends',
+      'Database Integration',
+      'API Development'
     ],
-    tagline: 'From database to deployment — we handle the full lifecycle of development.',
+    tagline: 'End-to-end solutions from database to deployment.',
     available: true
   },
   {
     id: 'ai',
     icon: CpuChipIcon,
-    title: 'Artificial Intelligence & Machine Learning',
+    title: 'AI & Machine Learning',
     emoji: '🧠',
-    description: 'Innovation meets intelligence in our AI/ML projects. We develop systems that learn, analyze, and make intelligent decisions, empowering students and businesses to explore the power of automation and analytics.',
+    description: 'Intelligent systems that learn and adapt. Computer vision, NLP, and predictive analytics solutions for modern challenges.',
     focuses: [
-      'Computer Vision (Face, Object, and Activity Detection)',
-      'NLP-based Chatbots & Voice Assistants',
-      'Predictive Analytics Models',
+      'Computer Vision Systems',
+      'NLP Chatbots',
+      'Predictive Analytics',
       'Recommendation Engines',
-      'AI-Driven Automation Tools'
+      'Automation Tools'
     ],
-    tagline: 'Our AI projects are designed not just to impress — but to inspire innovation and critical thinking.',
+    tagline: 'Building intelligent solutions that inspire innovation.',
     available: true
   },
   {
-    id: 'mobile',
+    id: 'training',
     icon: DevicePhoneMobileIcon,
-    title: 'Mobile Application Development',
-    emoji: '📱',
-    description: 'We design mobile-first, user-friendly applications that bring convenience and connectivity to your fingertips. Our apps are crafted for performance, usability, and security, ensuring a smooth experience across Android and iOS devices.',
+    title: 'Online Tech Classes',
+    emoji: '📚',
+    description: 'Live interactive sessions with industry experts. Practical training in Python, Web Development, Data Science, and AI/ML technologies.',
     focuses: [
-      'Cross-platform Apps (Flutter, React Native)',
-      'Native Android Applications',
-      'E-learning & Productivity Apps',
-      'IoT-connected Mobile Interfaces'
+      'Python Programming',
+      'Web Development',
+      'Data Science Training',
+      'AI/ML Courses',
+      'Live Project Sessions'
     ],
-    tagline: 'We turn ideas into mobile experiences that empower users and engage audiences.',
+    tagline: 'Learn from experts, build real projects, advance your career.',
     available: false
   },
   {
-    id: 'iot',
+    id: 'consulting',
     icon: WifiIcon,
-    title: 'Internet of Things (IoT)',
-    emoji: '🌍',
-    description: 'In our IoT projects, hardware meets software to create smart, connected solutions for modern challenges. We build intelligent systems that sense, communicate, and act — bringing automation into everyday life.',
+    title: 'Tech Consulting',
+    emoji: '💡',
+    description: 'Strategic technology guidance for businesses. System architecture, digital transformation, and automation solutions tailored to your needs.',
     focuses: [
-      'Smart Home & Smart City Systems',
-      'Health Monitoring Devices',
-      'Sensor-based Automation',
-      'Cloud & Mobile Integration for IoT',
-      'Real-time Data Visualization Dashboards'
+      'System Architecture',
+      'Digital Transformation',
+      'Process Automation',
+      'Technology Strategy',
+      'Performance Optimization'
     ],
-    tagline: 'Our IoT innovations are designed to make technology more human — intuitive, responsive, and connected.',
+    tagline: 'Strategic guidance for your digital transformation journey.',
     available: false
   }
 ]
@@ -150,48 +168,65 @@ export default function Portfolio() {
           </motion.div>
         </motion.div>
 
-        {/* Portfolio Sections */}
-        <div className="space-y-20">
+        {/* Portfolio Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioSections.map((section, index) => (
             <motion.div
               key={section.id}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: index * 0.1 }}
-              className="relative"
+              initial={{ opacity: 0, y: 50, rotateY: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -10, rotateY: 5, scale: 1.02 }}
+              className="relative group cursor-pointer"
             >
-              <div className="glass-effect p-12 rounded-3xl relative overflow-hidden border border-cyan-glow/20 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-electric-cyan/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+              <div className="glass-effect p-6 rounded-2xl relative overflow-hidden border border-cyan-glow/20 group-hover:border-cyan-glow/40 transition-all duration-500 h-full">
+                {/* Animated Background */}
                 <motion.div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-glow to-transparent opacity-0 group-hover:opacity-100"
-                  animate={{ y: [0, 500, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-br from-electric-cyan/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{
+                    background: [
+                      'radial-gradient(circle at 20% 20%, rgba(0,255,255,0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 80% 80%, rgba(168,85,247,0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 20% 20%, rgba(0,255,255,0.1) 0%, transparent 50%)'
+                    ]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                />
+                
+                {/* Holographic Scan Effect */}
+                <motion.div
+                  className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-glow to-transparent opacity-0 group-hover:opacity-100"
+                  animate={{ y: [0, 300, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 />
                 
                 {!section.available && (
-                  <div className="absolute top-6 right-6">
-                    <span className="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold border border-yellow-500/30">
-                      Coming Soon
+                  <motion.div 
+                    className="absolute top-4 right-4"
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-semibold border border-yellow-500/30">
+                      Soon
                     </span>
-                  </div>
+                  </motion.div>
                 )}
 
-                <div className="relative z-10">
-                  {/* Section Header */}
-                  <div className="flex items-center mb-8">
+                <div className="relative z-10 h-full flex flex-col">
+                  {/* Header */}
+                  <div className="flex items-center mb-4">
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className="w-20 h-20 bg-gradient-to-br from-electric-cyan to-purple-500 rounded-2xl flex items-center justify-center mr-6"
+                      transition={{ duration: 0.6, type: "spring" }}
+                      className="w-12 h-12 bg-gradient-to-br from-electric-cyan to-purple-500 rounded-xl flex items-center justify-center mr-4 group-hover:shadow-lg group-hover:shadow-electric-cyan/25"
                     >
-                      <section.icon className="w-10 h-10 text-white" />
+                      <section.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div>
+                    <div className="flex-1">
                       <motion.h3 
-                        className="text-4xl font-cyber text-cyan-glow mb-2"
-                        animate={{ textShadow: ['0 0 10px rgba(0,255,255,0.5)', '0 0 25px rgba(0,255,255,0.8)', '0 0 10px rgba(0,255,255,0.5)'] }}
-                        transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.5 }}
+                        className="text-xl font-cyber text-cyan-glow mb-1"
+                        animate={{ textShadow: ['0 0 5px rgba(0,255,255,0.5)', '0 0 15px rgba(0,255,255,0.8)', '0 0 5px rgba(0,255,255,0.5)'] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
                       >
                         {section.emoji} {section.title}
                       </motion.h3>
@@ -199,33 +234,69 @@ export default function Portfolio() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-xl text-tech-gray font-tech leading-relaxed mb-8 max-w-5xl">
-                    {section.description}
+                  <p className="text-sm text-tech-gray font-tech leading-relaxed mb-4 flex-1">
+                    {section.description.length > 120 ? section.description.substring(0, 120) + '...' : section.description}
                   </p>
 
-                  {/* Focus Areas */}
-                  <div className="mb-8">
-                    <h4 className="text-2xl font-cyber text-electric-blue mb-6">We {section.id === 'fullstack' ? 'Build' : section.id === 'ai' ? 'Expertise Includes' : section.id === 'mobile' ? 'Specializations' : section.id === 'iot' ? 'Project Areas' : 'Focus On'}:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {section.focuses.map((focus, idx) => (
+                  {/* Key Features */}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-cyber text-electric-blue mb-2">Key Areas:</h4>
+                    <div className="space-y-1">
+                      {section.focuses.slice(0, 3).map((focus, idx) => (
                         <motion.div
                           key={idx}
-                          whileHover={{ x: 10 }}
-                          className="flex items-center group"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="flex items-center text-xs text-tech-gray"
                         >
-                          <div className="w-3 h-3 bg-electric-cyan rounded-full mr-4 group-hover:scale-125 transition-transform"></div>
-                          <span className="text-tech-gray font-tech text-lg">{focus}</span>
+                          <motion.div 
+                            className="w-1.5 h-1.5 bg-electric-cyan rounded-full mr-2"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
+                          />
+                          <span>{focus}</span>
                         </motion.div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Tagline */}
-                  <div className="bg-gradient-to-r from-electric-cyan/10 to-purple-500/10 border border-electric-cyan/20 rounded-2xl p-6">
-                    <p className="text-lg text-electric-cyan font-cyber font-semibold italic text-center">
-                      {section.tagline}
-                    </p>
-                  </div>
+                  {/* Status Badge */}
+                  <motion.div
+                    className="mt-auto"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className={`text-center py-2 px-4 rounded-lg text-xs font-semibold ${
+                      section.available 
+                        ? 'bg-gradient-to-r from-electric-cyan/20 to-purple-500/20 text-electric-cyan border border-electric-cyan/30' 
+                        : 'bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-400 border border-yellow-500/30'
+                    }`}>
+                      {section.available ? '✨ Available Now' : '🚀 Coming Soon'}
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Particle Effects */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-electric-cyan rounded-full"
+                      style={{
+                        left: `${20 + i * 15}%`,
+                        top: `${30 + i * 10}%`
+                      }}
+                      animate={{
+                        y: [-10, -20, -10],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.2
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>
